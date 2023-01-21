@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace GPA_Calculator
+namespace Simple_Calculator
 {
     public partial class Form1 : Form
     {
@@ -17,145 +18,116 @@ namespace GPA_Calculator
             InitializeComponent();
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void textBox7_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
-        }
+        
+    }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int m1, m2, m3, m4, m5, m6;
-            int u1, u2, u3, u4, u5, u6;
-            m1 = Int32.Parse(txts1.Text);
-            m2 = Int32.Parse(txts2.Text);
-            m3 = Int32.Parse(txts3.Text);
-            m4 = Int32.Parse(txts4.Text);
-            m5 = Int32.Parse(txts5.Text);
-            m6 = Int32.Parse(txts6.Text);
 
-            u1 = Int32.Parse(txtu1.Text);
-            u2 = Int32.Parse(txtu2.Text);
-            u3 = Int32.Parse(txtu3.Text);
-            u4 = Int32.Parse(txtu4.Text);
-            u5 = Int32.Parse(txtu5.Text);
-            u6 = Int32.Parse(txtu6.Text);
-            int gpa = point(m1) * u1 + point(m2) * u2 + point(m3) * u3 + point(m4) * u4 + point(m5) * u5 + point(m6) * u6;
-       
-            int tu = u1 + u2 + u3 + u4 + u5 + u6;
-            int cgpa = gpa / tu;
-            string grade1 = GPA(cgpa);
-            G1.Text = grade(m1);
-            G2.Text = grade(m2);
-            G3.Text = grade(m3);
-            G4.Text = grade(m4);
-            G5.Text = grade(m5);
-            G6.Text = grade(m6);
-
-            P1.Text = Convert.ToString(point(m1));
-            P2.Text = Convert.ToString(point(m2));
-            P3.Text = Convert.ToString(point(m3));
-            P4.Text = Convert.ToString(point(m4));
-            P5.Text = Convert.ToString(point(m5));
-            P6.Text = Convert.ToString(point(m6));
-
-            CP.Text= Convert.ToString(tu);
-            GPA01.Text = Convert.ToString(cgpa);
-            OGP.Text = grade1;
+            if (textBox1.Text == "" || textBox2.Text == "")
+            {
+                MessageBox.Show("Write Numbers!");
+            }
+            else
+            {
+                int num1 = Int32.Parse(textBox1.Text);
+                int num2 = Int32.Parse(textBox2.Text);
+                int sum = num1 + num2;
+                MessageBox.Show(sum.ToString());
+            }
         }
-        int point(int score)
+
+        private void button4_Click(object sender, EventArgs e)
         {
-            int p = 0;
-            if(score<40)
+
+            if (textBox1.Text == "" || textBox2.Text == "")
             {
-                p = 0;
+                MessageBox.Show("Write Numbers!");
             }
-            else if(score>=40 && score < 50)
+            else
             {
-                p = 1;
+                int num1 = Int32.Parse(textBox1.Text);
+                int num2 = Int32.Parse(textBox2.Text);
+                int subtract = num1 - num2;
+                MessageBox.Show(subtract.ToString());
             }
-            else if (score >= 50 && score < 60)
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            if (textBox1.Text == "" || textBox2.Text == "")
             {
-                p = 2;
+                MessageBox.Show("Write Numbers!");
             }
-            else if (score >= 60 && score < 70)
+            else
             {
-                p = 3;
+                float num1 = float.Parse(textBox1.Text);
+                float num2 = float.Parse(textBox2.Text);
+                float divide = num1 / num2;
+                MessageBox.Show(divide.ToString());
             }
-            else if (score >= 70 && score < 80)
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            if (textBox1.Text == "" || textBox2.Text == "")
             {
-                p = 4;
+                MessageBox.Show("Write Numbers!");
             }
-            else if (score >= 80 && score < 100)
+            else
             {
-                p = 5;
+                int num1 = Int32.Parse(textBox1.Text);
+                int num2 = Int32.Parse(textBox2.Text);
+                int multiply = num1 * num2;
+                MessageBox.Show(multiply.ToString());
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "" || textBox2.Text == "")
+            {
+                MessageBox.Show("Write Numbers!");
+            }
+            else
+            {
+                float num1 = Int32.Parse(textBox1.Text);
+                float num2 = Int32.Parse(textBox2.Text);
+                int remainder = num1 % num2;
+                MessageBox.Show(remainder.ToString());
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "" || textBox2.Text == "")
+            {
+                MessageBox.Show("Write Numbers!");
+            }
+            else
+            {
+                int num1 = Int32.Parse(textBox1.Text);
+                int num2 = Int32.Parse(textBox2.Text);
+                int e = 1;
+                for(int i=0; i<num2; i++)
+                {
+                    e = e * num1;
+                }
+                MessageBox.Show(e.ToString());
             
-            return p;
-      
-        }
-        string grade(int score)
-        {
-            string p = "";
-            if (score <40)
-            {
-                p = "F";
-            }
-            else if (score >= 40 && score < 50)
-            {
-                p = "E";
-            }
-            else if (score >= 50 && score < 60)
-            {
-                p = "D";
-            }
-            else if (score >= 60 && score < 70)
-            {
-                p = "C";
-            }
-            else if (score >= 70 && score < 80)
-            {
-                p = "B";
-            }
-            else if (score >= 80 && score < 100)
-            {
-                p = "A";
-            }
-            return p;
-        }
-        string GPA(int score)
-        {
-            string p = "";
-            if (score < 40)
-            {
-                p = "Fail";
-            }
-            else if (score >= 40 && score < 50)
-            {
-                p = "Pass";
-            }
-            else if (score >= 50 && score < 60)
-            {
-                p = "Not Good";
-            }
-            else if (score >= 60 && score < 70)
-            {
-                p = "Satisfy";
-            }
-            else if (score >= 70 && score < 80)
-            {
-                p = "Very Good";
-            }
-            else if (score >= 80 && score < 100)
-            {
-                p = "Excellent";
-            }
-            return p;
         }
     }
 }
+
+
 
